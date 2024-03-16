@@ -1,0 +1,15 @@
+[sources.container]
+type = "file"
+include = [ "/var/log/divad/*.log" ]
+
+[sinks.loki]
+type = "loki"
+inputs = ["container"]
+endpoint = "http://37.27.6.77:3100"
+encoding.codec = "json"
+labels = {app="diva", env="alpha-net", username="${USERNAME}"}
+
+#[sinks.console]
+#type = "console"
+#inputs = ["container"]
+#encoding.codec = "json"

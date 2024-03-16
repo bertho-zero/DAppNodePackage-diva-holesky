@@ -1,0 +1,30 @@
+version: "2"
+fields:
+  - id: divaVaultPassword
+    target:
+      type: environment
+      name: DIVA_VAULT_PASSWORD
+      service: diva
+    title: Diva vault password
+    description: >-
+      This password is used to encrypt the database of your node and could be useful to restore your node in the future. Be aware that once this parameter is set during the bootstraping of the node, you won't be able to change it until such functionality is implemented.
+    required: true
+    secret: true
+  - id: divaApiKey
+    target:
+      type: environment
+      name: DIVA_API_KEY
+      service: diva
+    title: Diva API key
+    description: >-
+      The password that you want to use to login to your Diva node API, you must use this password later when accessing the Operator UI.
+    required: true
+    secret: true
+  - id: testnetUsername
+    target:
+      type: environment
+      name: USERNAME
+      service: vector
+    title: Testnet username
+    description: >-
+      ID that you want to use in the testnet (for instance, prada-0x0000000000000000000000000000000000000000)

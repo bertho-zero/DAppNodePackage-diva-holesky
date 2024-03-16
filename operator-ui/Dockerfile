@@ -1,0 +1,3 @@
+ARG UPSTREAM_VERSION
+
+FROM diva/operator-ui:${UPSTREAM_VERSION}

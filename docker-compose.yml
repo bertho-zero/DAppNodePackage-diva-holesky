@@ -59,7 +59,7 @@ services:
     build:
       context: operator-ui
       args:
-        UPSTREAM_VERSION: v24.3.1
+        UPSTREAM_VERSION: v24.3.2
     restart: unless-stopped
     expose:
       - "80"

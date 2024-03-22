@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   diva:
-    image: "diva.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "diva.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: diva
       args:
@@ -29,7 +29,7 @@ services:
       - "9000"
       - "30000"
   validator:
-    image: "validator.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "validator.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: validator
       args:
@@ -42,7 +42,7 @@ services:
     expose:
       - "7500"
   reloader:
-    image: "reloader.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "reloader.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: reloader
       args:
@@ -55,7 +55,7 @@ services:
       DIVA_W3S_API: "http://diva.diva-holesky.public.dappnode:9000"
       SYNC_PERIOD: 600
   ui:
-    image: "ui.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "ui.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: operator-ui
       args:
@@ -64,14 +64,14 @@ services:
     expose:
       - "80"
   jaeger:
-    image: "jaeger.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "jaeger.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: jaeger
       args:
         UPSTREAM_VERSION: v23.8.0
     restart: unless-stopped
   vector:
-    image: "vector.diva-holesky.public.dappnode.eth:0.1.0"
+    image: "vector.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: vector
       args:

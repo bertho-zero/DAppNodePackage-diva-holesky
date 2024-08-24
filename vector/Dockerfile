@@ -1,5 +1,5 @@
 ARG UPSTREAM_VERSION
 
-FROM diva/vector:${UPSTREAM_VERSION}
+FROM timberio/vector:${UPSTREAM_VERSION}
 
-COPY vector.toml /local/vector/vector.toml
+COPY vector.toml /etc/vector/vector.toml

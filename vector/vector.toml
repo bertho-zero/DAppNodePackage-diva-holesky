@@ -1,15 +1,10 @@
-[sources.container]
+[sources.diva_logs]
 type = "file"
-include = [ "/var/log/divad/*.log" ]
+include = ["/var/log/divad/*.log"]
 
 [sinks.loki]
 type = "loki"
-inputs = ["container"]
-endpoint = "http://37.27.6.77:3100"
+inputs = ["diva_logs"]
+endpoint = "https://919664:glc_eyJvIjoiMTE1MjYwOCIsIm4iOiJzdGFjay05NjE4ODQtaW50ZWdyYXRpb24taG9sZXNreS10ZXN0ZXIiLCJrIjoibzJ5QzUyZnNaTlNtVTg2ODExWk05djl5IiwibSI6eyJyIjoicHJvZC1ldS13ZXN0LTIifX0=@logs-prod-012.grafana.net"
+labels = {app="diva", job="${USERNAME}"}
 encoding.codec = "json"
-labels = {app="diva", env="alpha-net", username="${USERNAME}"}
-
-#[sinks.console]
-#type = "console"
-#inputs = ["container"]
-#encoding.codec = "json"

@@ -42,20 +42,12 @@ case $_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY in
 esac
 
 exec divad \
-  --db=/opt/diva/data/diva.db \
+  --db=/var/diva/config/diva.db \
   --w3s-address=0.0.0.0 \
+  --log-level=info \
+  --swagger-ui-enabled \
+  --master-key="${DIVA_API_KEY}" \
   --execution-client-url="${EXECUTION_CLIENT_URL}" \
   --consensus-client-url="${CONSENSUS_CLIENT_URL}" \
-  --tracing \
-  --log-level=debug \
-  --swagger-ui-enabled \
-  --contract=0x703848F4c85f18e3acd8196c8eC91eb0b7Bd0797 \
-  --master-key="${DIVA_API_KEY}" \
-  --genesis-time="${DIVA_GT}" \
-  --gvr="${CHAIN_GVR}" \
-  --genesis-fork-version="${CHAIN_GFV}" \
-  --current-fork-version="${CHAIN_CFV}" \
-  --deposit-contract="${CHAIN_DC}" \
-  --chain-id="${CHAIN_ID}" \
-  --bootnode-address="${DIVA_BOOTNODE}" \
+  --chain=holesky \
 2>&1 | tee /var/log/divad/divad.log

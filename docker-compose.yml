@@ -5,24 +5,14 @@ services:
     build:
       context: diva
       args:
-        UPSTREAM_VERSION: v24.1.0
+        UPSTREAM_VERSION: v24.8.0
     restart: unless-stopped
     volumes:
-      - "diva-vol:/opt/diva/data/"
-      - "diva-log-vol:/var/log/divad/"
+      - diva-vol:/var/diva/
+      - diva-log-vol:/var/log/divad/
     environment:
       DIVA_VAULT_PASSWORD: null
-      OTEL_EXPORTER_JAEGER_AGENT_HOST: jaeger.diva-holesky.public.dappnode
-      OTEL_EXPORTER_JAEGER_AGENT_PORT: 6831
       DIVA_API_KEY: null
-      CHAIN_GVR: "0x9143aa7c615a7f7115e2b6aac319c03529df8242ae705fba9df39b79c59fa8b1"
-      CHAIN_GFV: "0x01017000"
-      CHAIN_CFV: "0x05017000"
-      CHAIN_DC: "0x4242424242424242424242424242424242424242"
-      CHAIN_ID: 17000
-      DIVA_GT: 1695902400
-      DIVA_BOOTNODE: >-
-        /ip4/3.79.230.203/tcp/5050/p2p/16Uiu2HAmUqZCVYwUqqxCx52onMurX4cfdszKHJKBxD6oRjJpaxQ4,/ip4/3.71.81.235/tcp/5050/p2p/16Uiu2HAmUPpNwjuAEzAbnJxDXLH1C1MmH148Poru2N4mmJXDPUbZ,/ip4/157.90.30.135/tcp/5050/p2p/16Uiu2HAmGk25ubS2vmVb34Fk1bu2iSzrG8zoXTeZCGyNqzLMBsea
     ports:
       - "5050:5050"
     expose:
@@ -33,57 +23,28 @@ services:
     build:
       context: validator
       args:
-        UPSTREAM_VERSION: v4.0.7
+        UPSTREAM_VERSION: multiarch-v24.7.0
     restart: unless-stopped
-    volumes:
-      - "validator-config-vol:/config"
-      - "validator-data-vol:/data"
-      - "validator-jwt-vol:/jwt"
-    expose:
-      - "7500"
-  reloader:
-    image: "reloader.diva-holesky.public.dappnode.eth:0.1.1"
-    build:
-      context: reloader
-      args:
-        UPSTREAM_VERSION: v23.8.0
-    restart: unless-stopped
-    volumes:
-      - "validator-jwt-vol:/jwt"
-    environment:
-      VALIDATOR_RKM_API: "http://validator.diva-holesky.public.dappnode:7500"
-      DIVA_W3S_API: "http://diva.diva-holesky.public.dappnode:9000"
-      SYNC_PERIOD: 600
   ui:
     image: "ui.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: operator-ui
       args:
-        UPSTREAM_VERSION: v24.3.2
+        UPSTREAM_VERSION: v24.8.0
     restart: unless-stopped
     expose:
       - "80"
-  jaeger:
-    image: "jaeger.diva-holesky.public.dappnode.eth:0.1.1"
-    build:
-      context: jaeger
-      args:
-        UPSTREAM_VERSION: v23.8.0
-    restart: unless-stopped
   vector:
     image: "vector.diva-holesky.public.dappnode.eth:0.1.1"
     build:
       context: vector
       args:
-        UPSTREAM_VERSION: v23.8.0
+        UPSTREAM_VERSION: nightly-2024-08-21-alpine
     restart: unless-stopped
     volumes:
-      - "diva-log-vol:/var/log/divad/"
+      - diva-log-vol:/var/log/divad/
     environment:
       USERNAME: username-address
 volumes:
   diva-vol: {}
   diva-log-vol: {}
-  validator-config-vol: {}
-  validator-data-vol: {}
-  validator-jwt-vol: {}

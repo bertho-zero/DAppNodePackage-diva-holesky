@@ -1,6 +1,6 @@
 {
   "name": "diva-holesky.public.dappnode.eth",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "shortDescription": "Liquid Staking protocol powered by Distributed Validators (DVT).",
   "description": "Diva is an Ethereum Liquid Staking protocol powered by Distributed Validator Technology (DVT).\n\nIt extends Ethereum's Proof of Stake providing new functionality for Stakers and Operators:\n\n- **[Liquid Stakers](https://docs.divastaking.net/diva/entities/stakers)** receive divETH, a Liquid Staking Token which accrues Ethereum [Staking Rewards](https://docs.divastaking.net/staking-rewards).\n- **[Operators](https://docs.divastaking.net/diva/entities/operators)** run a **Di**stributed **Va**lidation node to fulfill staking duties and earn additional [Operator Rewards](https://docs.divastaking.com/economics).\n\nEthereum's staking rewards are distributed among the Diva network participants according to their contributions.\n\ndivETH is a receipt token and its balance updates daily to reflect the deposited ETH balance plus its accrued Ethereum staking rewards.\n\nWhile other solutions have some of these features, **Diva is the first solution that fully integrates Liquid Staking with [Distributed Validation](https://docs.divastaking.net/category/distributed-validators-technology-dvt)**, offering both Liquid Stakers and Operators the most efficient functionality.",
   "type": "service",

@@ -43,5 +43,12 @@
   "bugs": {
     "url": "https://github.com/bertho-zero/DAppNodePackage-diva-holesky/issues"
   },
+  "backup": [
+    {
+      "name": "diva",
+      "path": "/var/diva",
+      "service": "diva"
+    }
+  ],
   "license": "GPL-3.0"
 }

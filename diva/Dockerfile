@@ -2,7 +2,7 @@ ARG UPSTREAM_VERSION
 
 FROM diva/diva:${UPSTREAM_VERSION}
 
-RUN apt-get update && apt-get install -y logrotate
+RUN apk add --no-cache logrotate
 
 RUN mkdir -p /var/log/divad
 

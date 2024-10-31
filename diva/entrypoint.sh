@@ -41,6 +41,25 @@ case $_DAPPNODE_GLOBAL_CONSENSUS_CLIENT_HOLESKY in
   ;;
 esac
 
+MIGRATIONS_DIR="/etc/diva/migrations"
+LOCKS_DIR="/var/diva/migration_locks"
+
+mkdir -p "$LOCKS_DIR"
+
+find "$MIGRATIONS_DIR" -name "migration_*.sh" | while read migration; do
+  migration_name=$(basename "$migration")
+  lock_file="$LOCKS_DIR/$migration_name.lock"
+
+  if [ ! -f "$lock_file" ]; then
+    echo "Running migration $migration_name..."
+    sh "$migration"
+    touch "$lock_file"
+    echo "Migration $migration_name completed."
+  else
+    echo "Migration $migration_name has already been executed."
+  fi
+done
+
 exec divad \
   --db=/var/diva/config/diva.db \
   --w3s-address=0.0.0.0 \
@@ -50,4 +69,5 @@ exec divad \
   --execution-client-url="${EXECUTION_CLIENT_URL}" \
   --consensus-client-url="${CONSENSUS_CLIENT_URL}" \
   --chain=holesky \
+  --enable-participant \
 2>&1 | tee /var/log/divad/divad.log

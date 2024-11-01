@@ -23,7 +23,7 @@ services:
     build:
       context: validator
       args:
-        UPSTREAM_VERSION: multiarch-v24.7.0
+        UPSTREAM_VERSION: multiarch-v24.10.0
     restart: unless-stopped
   ui:
     image: ui.diva-holesky.public.dappnode.eth:0.2.4

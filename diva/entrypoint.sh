@@ -46,7 +46,7 @@ LOCKS_DIR="/var/diva/migration_locks"
 
 mkdir -p "$LOCKS_DIR"
 
-find "$MIGRATIONS_DIR" -name "migration_*.sh" | while read migration; do
+find "$MIGRATIONS_DIR" -name "migration_*.sh" | sort | while read migration; do
   migration_name=$(basename "$migration")
   lock_file="$LOCKS_DIR/$migration_name.lock"
 

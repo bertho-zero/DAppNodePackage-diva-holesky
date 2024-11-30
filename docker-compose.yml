@@ -5,7 +5,7 @@ services:
     build:
       context: diva
       args:
-        UPSTREAM_VERSION: v24.11.0
+        UPSTREAM_VERSION: v24.11.1
     restart: unless-stopped
     volumes:
       - diva-vol:/var/diva/

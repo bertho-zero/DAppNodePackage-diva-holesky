@@ -1,7 +1,7 @@
 version: "3.5"
 services:
   diva:
-    image: diva.diva-holesky.public.dappnode.eth:0.3.0
+    image: diva.diva-holesky.public.dappnode.eth:0.3.1
     build:
       context: diva
       args:
@@ -19,14 +19,14 @@ services:
       - "9000"
       - "30000"
   validator:
-    image: validator.diva-holesky.public.dappnode.eth:0.3.0
+    image: validator.diva-holesky.public.dappnode.eth:0.3.1
     build:
       context: validator
       args:
         UPSTREAM_VERSION: multiarch-v24.10.0
     restart: unless-stopped
   ui:
-    image: ui.diva-holesky.public.dappnode.eth:0.3.0
+    image: ui.diva-holesky.public.dappnode.eth:0.3.1
     build:
       context: operator-ui
       args:
@@ -35,7 +35,7 @@ services:
     expose:
       - "80"
   vector:
-    image: vector.diva-holesky.public.dappnode.eth:0.3.0
+    image: vector.diva-holesky.public.dappnode.eth:0.3.1
     build:
       context: vector
       args:
